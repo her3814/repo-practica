@@ -48,5 +48,9 @@ public class Alumno {
 		this.materiasCursadas.add(e);
 		e.setInscripto(this);
 	}
+	
+	public Inscripcion getLastInscripcion(Materia m) {
+		return this.materiasCursadas.stream().filter(i -> i.getMateria().equals(m)).reduce((a,b) -> b).orElse(null);
+	}
 
 }

@@ -89,7 +89,15 @@ public class App {
 
 
 		
-		sistema.inscribirAlumnoCursada(prof1, a1, m1,2020);
+		try {
+			sistema.inscribirAlumnoCursada(prof1, a1, m1,2020);
+		} catch (InscribirAlumnoCursadaDbException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocenteNoDictaMateriaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		sistema.inscribirAlumnoExamen(prof1, a1, m1);
 	}
