@@ -8,4 +8,12 @@ public class ReciboSueldo {
 	private YearMonth mesAnioLiquidacion;
 	private Double MontoPago;
 
+	
+	public ReciboSueldo(Long numeroRecibo, Empleado e, YearMonth fechaLiq, Double monto) {
+		this.numeroRecibo=numeroRecibo;
+		this.empleado=e;
+		this.mesAnioLiquidacion=fechaLiq;
+		this.MontoPago=monto;
+	}
+	
 }
