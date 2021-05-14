@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Materia {
-	private static Integer ID_GENERATOR=0;
+	private static Integer ID_GENERATOR = 0;
 
 	private Integer id;
 	private String nombre;
@@ -13,11 +13,11 @@ public class Materia {
 	private List<Examen> examenes;
 	private List<Materia> correlativasCursada;
 	private List<Materia> correlativasRendir;
-	
+
 	public Materia() {
 		this.id = ID_GENERATOR++;
 	}
-	
+
 	public Materia(String nombre) {
 		this();
 		this.docentes = new ArrayList<Docente>();
@@ -27,18 +27,23 @@ public class Materia {
 		this.correlativasRendir = new ArrayList<Materia>();
 		this.nombre = nombre;
 	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public List<Docente> getDocentes() {
 		return docentes;
 	}
@@ -58,7 +63,7 @@ public class Materia {
 	public List<Materia> getCorrelativasRendir() {
 		return correlativasRendir;
 	}
-	
+
 	public void addDocente(Docente d) {
 		this.docentes.add(d);
 	}
@@ -67,16 +72,16 @@ public class Materia {
 		this.inscripciones.add(i);
 		i.setMateria(this);
 	}
-	
+
 	public void addExamen(Examen e) {
 		this.examenes.add(e);
 		e.setMateria(this);
 	}
-	 
+
 	public void addCorrelativaRendir(Materia m) {
 		this.correlativasRendir.add(m);
 	}
-	
+
 	public void addCorrelativaCursada(Materia m) {
 		this.correlativasCursada.add(m);
 	}

@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Docente {
-	private static Integer ID_GENERATOR=0;
+	private static Integer ID_GENERATOR = 0;
 
-	public enum Cargo{PROFESOR,JTP,AYUDANTE};
+	public enum Cargo {
+		PROFESOR, JTP, AYUDANTE
+	};
 
 	private Integer id;
 	private String nombre;
@@ -14,15 +16,15 @@ public class Docente {
 	private List<Materia> catedras;
 	private List<Inscripcion> inscriptos;
 	private List<Examen> examenes;
-	
+
 	public Docente() {
 		this.id = ID_GENERATOR++;
 		this.catedras = new ArrayList<Materia>();
 		this.inscriptos = new ArrayList<Inscripcion>();
 		this.examenes = new ArrayList<Examen>();
 	}
-	
-	public Docente( String nombre, Cargo cargo) {
+
+	public Docente(String nombre, Cargo cargo) {
 		this();
 		this.nombre = nombre;
 		this.cargo = cargo;
@@ -61,10 +63,10 @@ public class Docente {
 		this.inscriptos.add(m);
 		m.setDocente(this);
 	}
-	
+
 	public void agregarExamen(Examen m) {
 		this.examenes.add(m);
 		m.setDocente(this);
 	}
-	
+
 }

@@ -4,9 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Inscripcion {
-	private static Integer ID_GENERATOR=0;
+	private static Integer ID_GENERATOR = 0;
 
-	public enum Estado {REGULAR,LIBRE,CURSANDO,PROMOCIONADO};
+	public enum Estado {
+		REGULAR, LIBRE, CURSANDO, PROMOCIONADO
+	};
+
 	private Integer id;
 	private Alumno inscripto;
 	private Materia materia;
@@ -17,13 +20,13 @@ public class Inscripcion {
 	public Inscripcion() {
 		this.id = ID_GENERATOR++;
 	}
-	
-	public Inscripcion(Integer ciclo,Estado e) {
+
+	public Inscripcion(Integer ciclo, Estado e) {
 		this();
 		this.cicloLectivo = ciclo;
 		this.estado = e;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -71,6 +74,5 @@ public class Inscripcion {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
-	
+
 }
