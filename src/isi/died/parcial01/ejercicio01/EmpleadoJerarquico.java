@@ -5,7 +5,7 @@ import java.time.Month;
 import java.time.YearMonth;
 import java.util.List;
 
-public class EmpleadoEfectivo implements Empleado {
+public class EmpleadoJerarquico implements Empleado {
 
 	private Integer dni;
 	private String nombre;
@@ -13,7 +13,7 @@ public class EmpleadoEfectivo implements Empleado {
 	private String email;
 	private List<Gasto> gastos;
 
-	public EmpleadoEfectivo(Integer dni, String nombre, LocalDate fechaContratacion, String correo) {
+	public EmpleadoJerarquico(Integer dni, String nombre, LocalDate fechaContratacion, String correo) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.fechaContratacion = fechaContratacion;
@@ -58,20 +58,15 @@ public class EmpleadoEfectivo implements Empleado {
 	@Override
 	public Double calcularSueldo() {
 		Month mes = YearMonth.now().getMonth();
-		Double sueldoBase = Empleado.SueldoBasico - Empleado.SueldoBasico * 0.11 - Empleado.SueldoBasico * 0.03;
-
+		var sueldoBase = Empleado.SueldoBasico * 0.95;
+		
 		if (mes.equals(Month.JUNE) || mes.equals(Month.DECEMBER)) {
 			var gratificacion = Empleado.SueldoBasico * 0.5;
 			var devolucionGastosYCostoFinanciero = this.gastos.stream().mapToDouble(g -> (g.getCosto() * 1.10)).sum();
-			return (sueldoBase + gratificacion + devolucionGastosYCostoFinanciero);
-		} else {
-			
-			Double totalGastosAprobados = this.gastos.stream()
-					.filter(g -> g.aprobado()).mapToDouble(g -> g.getCosto())
-					.sum();
-			
-			return sueldoBase + totalGastosAprobados;
-		}
+			return sueldoBase + gratificacion + devolucionGastosYCostoFinanciero;
+		} else 
+			return sueldoBase;
+		
 	}
 
 }
